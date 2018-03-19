@@ -1,0 +1,260 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+/* Side Menu Styles */
+
+nav {
+  background: #136fd2;
+  height: 100vh;
+  width: 75px;
+}
+
+nav .menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+nav .menu-item {
+  color: #ffffff;
+  font-size: 2em;
+  display: inline-block;
+  text-align: center;
+  height: 75px;
+}
+
+nav .menu-item:hover {
+  text-decoration: none;
+  font-size: 2.5em;
+  transition: font-size 0.5s ease-in-out, background-color 0.5s ease-in-out;
+  background-color: #13549a;
+}
+
+.profile-item {
+  background-color: #6717d2;
+  color: #ffffff;
+  border: 1px solid; 
+  text-align: center;
+  font-size: 2em;
+  display: inline-block;
+}
+
+#profile-item {
+  margin: 20px auto;
+}
+
+#menu-item {
+  margin: 20px auto;
+}
+
+nav .close-nav {
+  display: none;
+}
+
+.dashboard-content {
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: 500px;
+}
+
+.close {
+  display: none;
+}
+
+.open {
+  display: none;
+}
+
+ /* End Side Menu Styles */
+
+.movie-content {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  grid-template-areas: 
+  "movie-picture-section movie-info-section movie-edit-section";
+  height: 100vh;
+  width: 100%;
+}
+
+.movie-picture-section {
+  grid-area: movie-picture-section;
+  padding: 20px;
+  text-align: center;
+}
+
+.movie-info-section {
+  grid-area: movie-info-section;
+}
+
+.movie-edit-section {
+  grid-area: movie-edit-section;
+}
+
+.movie-default-image {
+  width: 100%;
+  max-width: 200px;
+  margin: 50px auto 0;
+  background-color: brown;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.movie-account-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#movie-image {
+  font-size: 6em;
+  margin: 0 auto;
+}
+
+.movie-info-title {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+  margin-left: 40px;
+}
+
+.movie-info-title-badge {
+  width: 140px;
+}
+
+.movie-info-run-time {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.movie-info-run-time-badge {
+  width: 140px;
+}
+
+.movie-info-rating {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.movie-info-rating-badge {
+  width: 140px;
+}
+
+.movie-info-synopsis {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.movie-info-synopsis-badge {
+  width: 140px;
+}
+
+.movie-info-director {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.movie-info-director-badge {
+  width: 140px;
+}
+
+.movie-info-production-company {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.movie-info-production-company-badge {
+  width: 140px;
+}
+
+.movie-info-supplier-name {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.movie-info-supplier-name-badge {
+  width: 140px;
+}
+
+.movie-info-start-date {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.movie-info-start-date-badge {
+  width: 140px;
+}
+
+.movie-info-end-date {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.movie-info-end-date-badge {
+  width: 140px;
+}
+
+#movie-edit-button {
+  margin: 0 auto;
+}
+
+.flex-display {
+  display: flex;
+}
+
+@media only screen and (max-width: 599px) {
+  
+    #side-menu {
+      transition: transform .3s ease-in-out;
+      top: 0;
+      bottom: 0;   
+      min-height: 100vh; 
+      position: fixed;
+      left: -340px;
+    }
+  
+    #side-menu:target {     
+      transform: translateX(340px);
+    }
+  
+    #close {
+      color: #ffffff;
+      font-size: 2em;
+      text-align: center;
+      height: 75px;
+      display: flex;
+      align-content: flex-end;
+      text-decoration: none;
+    }
+
+    #open {
+      color: black;
+      text-decoration: none;
+      display: block;
+    }
+
+    #menu-close {
+      margin: 20px auto;
+      color: red;
+    }
+  
+}

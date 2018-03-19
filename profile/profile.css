@@ -1,0 +1,229 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+/* Side Menu Styles */
+
+nav {
+  background: #136fd2;
+  height: 100vh;
+  width: 75px;
+}
+
+nav .menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+nav .menu-item {
+  color: #ffffff;
+  font-size: 2em;
+  display: inline-block;
+  text-align: center;
+  height: 75px;
+}
+
+nav .menu-item:hover {
+  text-decoration: none;
+  font-size: 2.5em;
+  transition: font-size 0.5s ease-in-out, background-color 0.5s ease-in-out;
+  background-color: #13549a;
+}
+
+.profile-item {
+  background-color: #6717d2;
+  color: #ffffff;
+  border: 1px solid; 
+  text-align: center;
+  font-size: 2em;
+  display: inline-block;
+}
+
+#profile-item {
+  margin: 20px auto;
+}
+
+#menu-item {
+  margin: 20px auto;
+}
+
+nav .close-nav {
+  display: none;
+}
+
+.dashboard-content {
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: 500px;
+}
+
+.close {
+  display: none;
+}
+
+.open {
+  display: none;
+}
+
+ /* End Side Menu Styles */
+
+.profile-content {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  grid-template-areas: 
+  "profile-picture-section profile-info-section profile-edit-section";
+  height: 100vh;
+  width: 100%;
+}
+
+.profile-picture-section {
+  grid-area: profile-picture-section;
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-info-section {
+  grid-area: profile-info-section;
+}
+
+.profile-edit-section {
+  grid-area: profile-edit-section;
+}
+
+.profile-default-image {
+  width: 100%;
+  max-width: 200px;
+  margin: 50px auto 0;
+  background-color: brown;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.profile-account-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#profile-image {
+  font-size: 6em;
+  margin: 0 auto;
+}
+
+.profile-info-name {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+  margin-left: 40px;
+}
+
+.profile-info-name-badge {
+  width: 140px;
+}
+
+.profile-info-email {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.profile-info-email-badge {
+  width: 140px;
+}
+
+.profile-info-address {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.profile-info-address-indent {
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 80px;
+}
+
+.profile-info-phone {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.profile-info-phone-badge {
+  width: 140px;
+}
+
+.profile-info-credit-card {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.profile-info-credit-card-badge {
+  width: 140px;
+}
+
+.profile-info-credit-card-expiry {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.profile-info-credit-card-expiry-badge {
+  width: 140px;
+}
+
+#profile-edit-button {
+  margin: 0 auto;
+}
+
+.flex-display {
+  display: flex;
+}
+
+@media only screen and (max-width: 599px) {
+  
+    #side-menu {
+      transition: transform .3s ease-in-out;
+      top: 0;
+      bottom: 0;   
+      min-height: 100vh; 
+      position: fixed;
+      left: -340px;
+    }
+  
+    #side-menu:target {     
+      transform: translateX(340px);
+    }
+  
+    #close {
+      color: #ffffff;
+      font-size: 2em;
+      text-align: center;
+      height: 75px;
+      display: flex;
+      align-content: flex-end;
+      text-decoration: none;
+    }
+
+    #open {
+      color: black;
+      text-decoration: none;
+      display: block;
+    }
+
+    #menu-close {
+      margin: 20px auto;
+      color: red;
+    }
+  
+}
