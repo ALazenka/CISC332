@@ -5,7 +5,6 @@
 		$uri = 'http://';
 	}
 	$uri .= $_SERVER['HTTP_HOST'];
-	header('Location: '.$uri.'/dashboard/');
+	header('Location: '.$uri.'/CISC332/login/');
 	exit;
 ?>
-Something is wrong with the XAMPP installation :-(
