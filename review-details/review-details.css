@@ -1,0 +1,157 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+.review-details-content {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  grid-template-areas: 
+  "review-details-picture-section review-details-info-section review-details-edit-section";
+  height: 100vh;
+  width: 100%;
+}
+
+.review-details-picture-section {
+  grid-area: review-details-picture-section;
+  padding: 20px;
+  text-align: center;
+}
+
+.review-details-info-section {
+  grid-area: review-details-info-section;
+}
+
+.review-details-edit-section {
+  grid-area: review-details-edit-section;
+}
+
+.review-details-default-image {
+  width: 100%;
+  max-width: 200px;
+  margin: 50px auto 0;
+  background-color: brown;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.review-details-account-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#review-details-image {
+  font-size: 6em;
+  margin: 0 auto;
+}
+
+.review-details-info-movie-title {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.review-details-info-movie-title-badge {
+  width: 140px;
+}
+
+.review-details-info-author {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.review-details-info-author-badge {
+  width: 140px;
+}
+
+.review-details-info-review-title {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.review-details-info-review-title-badge {
+  width: 140px;
+}
+
+.review-details-info-content {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.review-details-info-content-badge {
+  width: 140px;
+}
+
+.review-details-info-content-field {
+  width: 70%;
+}
+
+.review-details-info-score {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.review-details-info-score-badge {
+  width: 140px;
+}
+
+#review-details-edit-button {
+  margin: 80px auto 0;
+}
+
+.flex-display {
+  display: flex;
+}
+
+/* Review Edit Styles */
+
+.review-edit-info-movie-select {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.review-edit-info-movie-select-badge {
+  width: 140px;
+}
+
+.review-edit-info-score-select {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.review-edit-info-score-select-badge {
+  width: 140px;
+}
+
+.review-edit-info-review-title {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.review-edit-info-review-title-badge {
+  width: 140px;
+}
+
+.review-edit-info-review-content {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.review-edit-info-review-content-badge {
+  width: 140px;
+}
+
+.review-edit-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

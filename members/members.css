@@ -1,0 +1,64 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+.members-content {
+  display: grid;
+  grid-template-rows: 10vh 7vh 83vh;
+  grid-template-areas:
+  "members-title-section"
+  "members-alert-section"
+  "members-info-section"
+  ;
+  width: 100%;
+}
+
+.members-title-section {
+  grid-area: members-title-section;
+  background-color: rgba(218, 218, 218, 0.57);
+  text-align: center;
+  box-shadow: 0 2px 1px -1px gray;
+  min-height: 130px;
+}
+
+.members-title-section h1 {
+  margin-top: 18px;
+}
+
+.members-alert-section {
+  grid-area: members-alert-section;
+  width: 95%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.members-info-section {
+  grid-area: members-info-section;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.remove-cell {
+  text-align: center;
+}
+
+.remove-user-link {
+  text-decoration: none;
+  color: black;
+}
+
+.remove-user-link:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.remove-user:hover {
+  z-index: 1;
+  color: red;
+  transition: color 0.3s ease-in-out;
+}
+
+.table-item {
+  cursor: pointer;
+}

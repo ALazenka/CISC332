@@ -104,21 +104,32 @@ nav .close-nav {
   border-radius: 20px;
 }
 
-.sign-up-account-number {
-  font-size: 2em;
-  margin-top: 20px;
-}
-
 #sign-up-image {
   font-size: 6em;
   margin: 0 auto;
 }
 
-.sign-up-info-name {
+.sign-up-account-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+.sign-up-info-firstname {
   display: flex;
   width: 100%;
   margin-top: 80px;
-  margin-left: 40px;
+}
+
+.sign-up-info-lastname {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.sign-up-info-account-number {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
 }
 
 .sign-up-info-name-badge {
@@ -129,10 +140,19 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .sign-up-info-email-badge {
+  width: 140px;
+}
+
+.sign-up-info-password {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.sign-up-info-password-badge {
   width: 140px;
 }
 
@@ -140,20 +160,19 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .sign-up-info-address-indent {
   width: 100%;
   margin-top: 40px;
-  margin-left: 80px;
+  margin-left: 5%;
+  width: 95%;
 }
 
 .sign-up-info-phone {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .sign-up-info-phone-badge {
@@ -164,7 +183,6 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .sign-up-info-credit-card-badge {
@@ -175,7 +193,6 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .sign-up-info-credit-card-expiry-badge {
@@ -188,6 +205,14 @@ nav .close-nav {
 
 .flex-display {
   display: flex;
+}
+
+.sign-up-info-address-badge {
+  width: 140px;
+}
+
+.margin-top {
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 599px) {

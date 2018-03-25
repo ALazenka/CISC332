@@ -1,7 +1,19 @@
 <?php
   include '../components/sql-connect.php';
+  session_start();
+  if (!isset($_SESSION["account_number"])) {
+    $_SESSION["login_redirect"] = true;
+    header("Location: ../login");
+  }
 
   $showtimes = [];
+  $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+  $complex_id = 0;
+  foreach (parse_url($url) as &$item) {
+    if (strpos($item, 'id=') !== false) {
+      $complex_id = str_replace("complex_id=", "", $item);
+    } 
+  };
   $get_showtimes = "SELECT showing.id as id, movie.title as movie_title, theater_complex.name as complex_name, theater.theater_number, showing.start_time, movie.run_time
             FROM showing 
             JOIN theater_complex 
@@ -9,7 +21,8 @@
             JOIN theater 
               ON showing.theater_id=theater.id
             JOIN movie
-              ON showing.movie_id=movie.id";
+              ON showing.movie_id=movie.id
+            WHERE theater_complex_id=$complex_id";
   $result = $conn->query($get_showtimes);
 
   if (!$result) {
@@ -26,7 +39,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Showtimes - OMTS</title>
+    <title>Reservation Showtimes - OMTS</title>
     <link rel="stylesheet" type="text/css" media="screen" href="showtimes.css" />
     <?php include '../components/head-contents.php'; ?>
   </head>
@@ -37,10 +50,11 @@
         <i class="fas fa-bars"></i>
       </a>
       <div class="showtimes-title-section">
-        <h1 class="showtimes-title">Showtimes</h1>
+        <h1 class="showtimes-title">Reservation - Showtimes</h1>
+        <h4>Select a Showtime to Purchase Tickets</h4>
       </div>
       <div class="showtimes-info-section">
-        <table class="table">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">ID</th>
@@ -55,7 +69,7 @@
             <?php
               foreach ($showtimes as &$showtime) {
             ?>
-            <tr class="table-item" onclick="location.href = '/CISC332/showing/?id=<?php echo $showtime['id']; ?>';">
+            <tr class="table-item" onclick="location.href = '/CISC332/checkout/?showtime_id=<?php echo $showtime['id']; ?>';">
               <th scope="row"><?php echo $showtime['id']; ?></th>
               <td><?php echo $showtime['movie_title']; ?></td>
               <td><?php echo $showtime['complex_name']; ?></td>

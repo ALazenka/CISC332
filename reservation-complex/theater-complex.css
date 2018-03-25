@@ -1,0 +1,44 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+.theater-complex-content {
+  display: grid;
+  grid-template-rows: 10vh 7vh 83vh;
+  grid-template-areas:
+  "theater-complex-title-section"
+  "theater-complex-alert-section"
+  "theater-complex-info-section"
+  ;
+  width: 100%;
+}
+
+.theater-complex-title-section {
+  grid-area: theater-complex-title-section;
+  background-color: rgba(218, 218, 218, 0.57);
+  text-align: center;
+  box-shadow: 0 2px 1px -1px gray;
+  min-height: 130px;
+}
+
+.theater-complex-title-section h1 {
+  margin-top: 18px;
+}
+
+.theater-complex-alert-section {
+  grid-area: theater-complex-alert-section;
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.theater-complex-info-section {
+  grid-area: theater-complex-info-section;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.table-item {
+  cursor: pointer;
+}

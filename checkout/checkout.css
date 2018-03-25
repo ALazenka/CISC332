@@ -1,0 +1,131 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+.checkout-content {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  grid-template-areas: 
+  "checkout-picture-section checkout-info-section checkout-edit-section";
+  height: 100vh;
+  width: 100%;
+}
+
+.checkout-picture-section {
+  grid-area: checkout-picture-section;
+  padding: 20px;
+  text-align: center;
+}
+
+.checkout-info-section {
+  grid-area: checkout-info-section;
+}
+
+.checkout-edit-section {
+  grid-area: checkout-edit-section;
+}
+
+.checkout-default-image {
+  width: 100%;
+  max-width: 200px;
+  margin: 50px auto 0;
+  background-color: brown;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.checkout-account-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#checkout-image {
+  font-size: 6em;
+  margin: 0 auto;
+}
+
+.checkout-info-movie-title {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.checkout-info-movie-title-badge {
+  width: 140px;
+}
+
+.checkout-info-start-time {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.checkout-info-start-time-badge {
+  width: 140px;
+}
+
+.checkout-info-complex {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.checkout-info-complex-badge {
+  width: 140px;
+}
+
+.checkout-info-complex-address {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.checkout-info-complex-address-badge {
+  width: 140px;
+}
+
+.checkout-info-theater-number {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.checkout-info-theater-number-badge {
+  width: 140px;
+}
+
+.checkout-info-tickets {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.checkout-info-tickets-badge {
+  width: 140px;
+}
+
+.checkout-info-total-cost {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.checkout-info-total-cost-badge {
+  width: 140px;
+}
+
+.checkout-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.flex-display {
+  display: flex;
+}
+
+.tickets-dropdown {
+  width: 100px !important;
+}

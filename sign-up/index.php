@@ -1,22 +1,51 @@
 <?php
   include '../components/sql-connect.php';
   session_start();
+  $_SESSION["password_match_error"] = false;
+  $_SESSION["duplicate_email"] = false;
+  $_SESSION["duplicate_account_number"] = false;
   
-  $customer = "";
-  $get_customers = "SELECT id, account_number, firstname, lastname, street, town, postalcode, province, country, phone_number, email_address, cc_number, cc_expiry_date FROM customer WHERE account_number=" . $_SESSION['account_number'];
-  $result = $conn->query($get_customers);
+  if (isset($_POST["create-button"])) {
+    $duplicate_email = "SELECT * FROM customer WHERE email_address='" . $_POST['email'] . "'";
+    $result_de = $conn->query($duplicate_email);
 
-  if (!$result) {
-    echo 'Could not run query: ' . mysql_error();
-    exit;
-  }
+    $duplicate_account_number = "SELECT * FROM customer WHERE account_number='" . $_POST['account_number'] . "'";
+    $result_dan = $conn->query($duplicate_account_number);
 
-  if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-      $customer = $row;
+    if ($result_de->num_rows > 0) {
+      $_SESSION["duplicate_email"] = true;
+    } else if ($result_dan->num_rows > 0) {
+      $_SESSION["duplicate_account_number"] = true;
+    } else if ($_POST["password"] != $_POST["confirm_password"]) {
+      $_SESSION["password_match_error"] = true;
+    } else {
+      $customer_first_name = $_POST["firstname"];
+      $customer_last_name = $_POST["lastname"];
+      $customer_account_number = $_POST["account_number"];
+      $customer_email = $_POST["email"];
+      $customer_password = $_POST["password"];
+      $customer_street = $_POST["street"];
+      $customer_town = $_POST["town"];
+      $customer_province = $_POST["province"];
+      $customer_country = $_POST["country"];
+      $customer_postalcode = $_POST["postalcode"];
+      $customer_phone_number = $_POST["phone_number"];
+      $customer_cc_number = $_POST["cc_number"];
+      $customer_cc_expiry = $_POST["cc_expiry"];
+      $create_user = "INSERT INTO customer
+                      VALUES ('$customer_account_number', '$customer_password', '$customer_first_name', '$customer_last_name', '$customer_street', '$customer_town', '$customer_postalcode', '$customer_province', '$customer_country', '$customer_phone_number', '$customer_email', '$customer_cc_number', '$customer_cc_expiry', '0', '')";
+      $result = $conn->query($create_user);
+      if (!$result) {
+        echo 'Could not run query: ' . mysql_error();
+        exit;
+      }
+      $_SESSION["account_create_success"] = true;
+      $_SESSION["password_match_error"] = false;
+      $_SESSION["duplicate_email"] = false;
+      $_SESSION["account_number"] = $customer_account_number;
+      header("Location: ../theater-complex");
     }
   }
-
   $conn->close();
 ?>
 <!DOCTYPE html>
@@ -27,7 +56,6 @@
     <?php include '../components/head-contents.php'; ?>
   </head>
   <body>
-    <?php include '../components/side-menu.php'; ?>
     <main class="sign-up-content">
       <a class="toggle open" id="open" href="#side-menu">
         <i class="fas fa-bars"></i>
@@ -37,47 +65,75 @@
         <div class="sign-up-account-number">Create Account</div>
       </div>
       <div class="sign-up-info-section">
-        <div class="sign-up-info-name">
-          <div class="sign-up-info-name-badge">Name:</div>
-          <input class="sign-up-info-name-field" type="text" />
-        </div>
-        <div class="sign-up-info-email">
-          <div class="sign-up-info-email-badge">Email:</div>
-          <input class="sign-up-info-email-field" type="text" />
-        </div>
-        <div class="sign-up-info-address">Address</div>
-        <div class="sign-up-info-address-indent">
-          <div class="flex-display">
-            <div class="sign-up-info-address-badge">Street: <input type="text" /></div>
+        <form action="index.php" method="POST">
+          <div class="sign-up-info-firstname">
+            <input class="sign-up-info-name-field form-control" name="firstname" placeholder="First Name" type="text" />
           </div>
-          <div class="flex-display">
-            <div class="sign-up-info-address-badge">Town: <input type="text" /></div>
+          <div class="sign-up-info-lastname">
+            <input class="sign-up-info-name-field form-control" name="lastname" placeholder="Last Name" type="text" />
           </div>
-          <div class="flex-display">
-            <div class="sign-up-info-address-badge">State/Province: <input type="text" /></div>
+          <div class="sign-up-info-account-number">
+            <input class="sign-up-info-name-field form-control" name="account_number" placeholder="Account Number" type="text" />
           </div>
-          <div class="flex-display">
-            <div class="sign-up-info-address-badge">Country: <input type="text" /></div>
+          <?php
+            if ($_SESSION["duplicate_account_number"]) {
+          ?>
+          <div style="color:red;text-align:right;">Account Number taken, please choose another.</div>
+          <?php
+            }
+          ?>
+          <div class="sign-up-info-email">
+            <input class="sign-up-info-name-field form-control" name="email" placeholder="Email Address" type="text" />
           </div>
-          <div class="flex-display">
-            <div class="sign-up-info-address-badge">Postal Code: <input type="text" /></div>
+          <?php
+            if ($_SESSION["duplicate_email"]) {
+          ?>
+          <div style="color:red;text-align:right;">Email has been taken by another account!</div>
+          <?php
+            }
+          ?>
+          <div class="sign-up-info-password">
+            <input class="sign-up-info-name-field form-control" name="password" placeholder="Password" type="password" />
           </div>
-        </div>
-        <div class="sign-up-info-phone">
-          <div class="sign-up-info-phone-badge">Phone Number:</div>
-          <input class="sign-up-info-phone-field" type="text" />
-        </div>
-        <div class="sign-up-info-credit-card">
-          <div class="sign-up-info-credit-card-badge">Credit Card:</div>
-          <input class="sign-up-info-credit-card-field" type="text" />
-        </div>
-        <div class="sign-up-info-credit-card-expiry">
-          <div class="sign-up-info-credit-card-expiry-badge">Credit Card Expiry:</div>
-          <input class="sign-up-info-credit-card-expiry-field" type="text" />
-        </div>
-      </div>
-      <div class="sign-up-save-section">
-        <button id="sign-up-save-button" type="button" class="btn btn-secondary">Save</button>
+          <?php
+            if ($_SESSION["password_match_error"]) {
+          ?>
+          <div style="color:red;text-align:right;">Passwords do not match!</div>
+          <?php
+            }
+          ?>
+          <div class="sign-up-info-password">
+            <input class="sign-up-info-name-field form-control" name="confirm_password" placeholder="Confirm Password" type="password" />
+          </div>
+          <div class="sign-up-info-address">Address:</div>
+          <div class="sign-up-info-address-indent">
+            <div class="flex-display">
+              <input class="sign-up-info-name-field form-control" name="street" placeholder="Street" type="text" />
+            </div>
+            <div class="flex-display margin-top">
+              <input class="sign-up-info-name-field form-control" name="town" placeholder="Town/City" type="text" />
+            </div>
+            <div class="flex-display margin-top">
+              <input class="sign-up-info-name-field form-control" name="province" placeholder="State/Province" type="text" />
+            </div>
+            <div class="flex-display margin-top">
+              <input class="sign-up-info-name-field form-control" name="country" placeholder="Country" type="text" />
+            </div>
+            <div class="flex-display margin-top">
+              <input class="sign-up-info-name-field form-control" name="postalcode" placeholder="Postal Code" type="text" />
+            </div>
+          </div>
+          <div class="sign-up-info-phone">
+            <input class="sign-up-info-name-field form-control" name="phone_number" placeholder="Phone Number" type="text" />
+          </div>
+          <div class="sign-up-info-credit-card">
+            <input class="sign-up-info-name-field form-control" name="cc_number" placeholder="Credit Card Number" type="text" />
+          </div>
+          <div class="sign-up-info-credit-card-expiry">
+            <input class="sign-up-info-name-field form-control" name="cc_expiry" placeholder="Credit Card Expiry Date" type="text" />
+          </div>
+          <input id="sign-up-save-button" name="create-button" type="submit" class="btn btn-success" value="Create Account" />
+        </form>
       </div>
     </main>
   </body>

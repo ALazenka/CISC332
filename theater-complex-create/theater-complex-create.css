@@ -1,0 +1,89 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+.theater-complex-create-content {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  grid-template-areas: 
+  "theater-complex-create-picture-section theater-complex-create-info-section theater-complex-create-edit-section";
+  height: 100vh;
+  width: 100%;
+}
+
+.theater-complex-create-picture-section {
+  grid-area: theater-complex-create-picture-section;
+  padding: 20px;
+  text-align: center;
+}
+
+.theater-complex-create-info-section {
+  grid-area: theater-complex-create-info-section;
+}
+
+.theater-complex-create-edit-section {
+  grid-area: theater-complex-create-edit-section;
+}
+
+.theater-complex-create-default-image {
+  width: 100%;
+  max-width: 200px;
+  margin: 50px auto 0;
+  background-color: brown;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.theater-complex-create-theater-complex-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#theater-complex-create-image {
+  font-size: 6em;
+  margin: 0 auto;
+}
+
+.theater-complex-create-info-name {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.theater-complex-create-info-name-badge {
+  width: 140px;
+}
+
+.theater-complex-create-info-phone {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.theater-complex-create-info-phone-badge {
+  width: 140px;
+}
+
+.theater-complex-create-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.theater-complex-info-address {
+  margin-top: 20px;
+}
+
+.flex-display {
+  display: flex;
+}
+
+.sign-up-info-address-badge {
+  width: 140px;
+}
+
+.margin-top {
+  margin-top: 20px;
+}

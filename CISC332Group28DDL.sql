@@ -72,9 +72,7 @@ CREATE TABLE Reservation
   showing_id INT NOT NULL,
   tickets_reserved INT NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (id),
-  UNIQUE (account_number),
-  UNIQUE (showing_id));
+  PRIMARY KEY (id));
 
 CREATE TABLE Review
 (
@@ -95,9 +93,9 @@ CREATE TABLE Showing
   start_time VARCHAR(10) NOT NULL,
   seats_available INT NOT NULL,
   PRIMARY KEY (id),
-  UNIQUE (theater_complex_id),
-  UNIQUE (movie_id),
-  UNIQUE (theater_id));
+  KEY (theater_complex_id),
+  KEY (movie_id),
+  KEY (theater_id));
 
 CREATE TABLE customer_res
 (
@@ -106,7 +104,7 @@ CREATE TABLE customer_res
   customer_id INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (customer_id) REFERENCES Customer(id),
-  FOREIGN KEY (reservation_id) REFERENCES Reservation(id));
+  FOREIGN KEY (reservation_id) REFERENCES Reservation(movie_id));
 
 CREATE TABLE movie_review
 (
@@ -224,9 +222,6 @@ INSERT INTO Customer
 VALUES
 (2, 12167345, '#aw3sum', 'Bruno', 'Mars', 'King St.', 'Toronto', 'H2G6N3', 'Ontario', 'Canada', 6478934444, 'uptownfunk@gmail.com', 8459037628797485, '05/20');
 
-INSERT INTO Customer
-(id, account_number, password, firstname, lastname, street, town, postalcode, province, country, phone_number, email_address, cc_number, cc_expiry_date)
-VALUES
 (3, 10176676, 'letmein', 'David', 'Letterman', 'Wildwood', 'Vancouver', 'O8I8P8', 'British Columbia', 'Canada', '3332226666', 'dletterman@hotmail.com', 2147483647, '10/18');
 
 INSERT INTO Movie
@@ -245,36 +240,36 @@ VALUES
 (3, 115, '14A', 'After the death of his father, T Challa returns home to the African nation of Wakanda to take his rightful place as king. When a powerful enemy suddenly reappears, T Challas mettle as king -- and as Black Panther -- gets tested when he is drawn into a conflict that puts the fate of Wakanda and the entire world at risk. Faced with treachery and danger, the young king must rally his allies and release the full power of Black Panther to defeat his foes and secure the safety of his people.', 'Ryan Coogler', 'Marvel Studios', 'Walt Disney Studios', 4222018, 06152018, 'Black Panther');
 
 INSERT INTO Reservation
-(showing_id, account_number, tickets_reserved, id)
+(movie_id, account_number, tickets_reserved, id)
 VALUES
 (1, 10178956, 3, 1);
 
 INSERT INTO Reservation
-(showing_id, account_number, tickets_reserved, id)
+(movie_id, account_number, tickets_reserved, id)
 VALUES
 (2, 12167345, 2, 2);
 
 INSERT INTO Reservation
-(showing_id, account_number, tickets_reserved, id)
+(movie_id, account_number, tickets_reserved, id)
 VALUES
 (3, 10176676, 1, 3);
 
 INSERT INTO Review
-(id, title, content, score, movie_id)
+(id, title, content)
 VALUES
-(1, 'Beyonce', 'The Greatest Showman tries hard to dazzle the audience with a Barnum-style sense of wonder -- but at the expense of its complex subject is far more intriguing real-life story.', 3, 1);
+(1, 'Beyonce', 'The Greatest Showman tries hard to dazzle the audience with a Barnum-style sense of wonder -- but at the expense of its complex subject is far more intriguing real-life story.');
 
 INSERT INTO Review
-(id, title, content, score, movie_id)
+(id, title, content, movie_id)
 VALUES
-(2, 'Bruno', 'Black Panther elevates superhero cinema to thrilling new heights while telling one of the MCUs most absorbing stories -- and introducing some of its most fully realized characters.', 4, 2);
+(2, 'Bruno', 'Black Panther elevates superhero cinema to thrilling new heights while telling one of the MCUs most absorbing stories -- and introducing some of its most fully realized characters.');
 
 INSERT INTO Review
-(id, title, content, score, movie_id)
+(id, title, content, movie_id)
 VALUES
-(3, "Andrew's Review", "Tomb Raider felt like an instant classic, would recommend this to all of my friends!", 3, 3);
+(3, "Andrew's Review", "Tomb Raider felt like an instant classic, would recommend this to all of my friends!");
 
-INSERT INTO `showing` (`movie_id`, `theater_id`, `theater_complex_id`, `start_time`, `seats_available`) VALUES
+INSERT INTO `showing` (`id`, `movie_id`, `theater_id`, `start_time`, `seats_available`) VALUES
 (1, 1, 1, '2:10', 100),
 (2, 2, 2, '3:30', 110),
 (3, 3, 3, '12:00', 90);

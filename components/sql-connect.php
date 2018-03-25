@@ -2,7 +2,7 @@
   // server variables
   $servername = "localhost";
   $username = "root";
-  $password = "root";
+  $password = "";
   $dbname = "cisc332";
 
   // Create connection

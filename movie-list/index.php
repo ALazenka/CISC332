@@ -1,5 +1,10 @@
 <?php
   include '../components/sql-connect.php';
+  session_start();
+  if (!isset($_SESSION["account_number"]) || $_SESSION["account_number"] < 0) {
+    $_SESSION["login_redirect"] = true;
+    header("Location: ../login");
+  }
 
   $movie_list = [];
   $get_movies = "SELECT id, title, run_time, rating  FROM movie";
@@ -31,10 +36,25 @@
         <i class="fas fa-bars"></i>
       </a>
       <div class="movie-list-title-section">
-        <h1 class="movie-list-title">Movie List</h1>
+        <h1 class="movie-list-title">Movie List
+          <?php if ($_SESSION["user_role"] == 1) { ?>
+          <a class="btn btn-success add-movie-button" href="/CISC332/movie-create" role="button">Add Movie</a>
+          <?php } ?>
+        </h1>
+        <h4>Movies Currently Playing in Theaters</h4>
       </div>
+      <?php
+        if (isset($_SESSION["movie_create_success"]) && $_SESSION["movie_create_success"]) {
+          $_SESSION["movie_create_success"] = false;
+      ?>
+      <div class="alert alert-success movie-list-alert-section" role="alert">
+        <strong>Movie Created!</strong>
+      </div>
+      <?php
+        }
+      ?>
       <div class="movie-list-info-section">
-        <table class="table">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">ID</th>
@@ -47,7 +67,7 @@
             <?php
               foreach ($movie_list as &$movie) {
             ?>
-            <tr class="table-item" onclick="location.href = '/CISC332/movie/?id=<?php echo $movie['id']; ?>';">
+            <tr class="table-item" onclick="location.href = '/CISC332/movie/?movie_id=<?php echo $movie['id']; ?>';">
               <th scope="row"><?php echo $movie['id']; ?></th>
               <td><?php echo $movie['title']; ?></td>
               <td><?php echo $movie['run_time']; ?></td>

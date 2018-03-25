@@ -3,79 +3,12 @@ body {
   margin: 0px;
 }
 
-/* Side Menu Styles */
-
-nav {
-  background: #136fd2;
-  height: 100vh;
-  width: 75px;
-}
-
-nav .menu-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-nav .menu-item {
-  color: #ffffff;
-  font-size: 2em;
-  display: inline-block;
-  text-align: center;
-  height: 75px;
-}
-
-nav .menu-item:hover {
-  text-decoration: none;
-  font-size: 2.5em;
-  transition: font-size 0.5s ease-in-out, background-color 0.5s ease-in-out;
-  background-color: #13549a;
-}
-
-.profile-item {
-  background-color: #6717d2;
-  color: #ffffff;
-  border: 1px solid; 
-  text-align: center;
-  font-size: 2em;
-  display: inline-block;
-}
-
-#profile-item {
-  margin: 20px auto;
-}
-
-#menu-item {
-  margin: 20px auto;
-}
-
-nav .close-nav {
-  display: none;
-}
-
-.dashboard-content {
-  grid-template-columns: 1fr;
-  width: 100%;
-  height: 500px;
-}
-
-.close {
-  display: none;
-}
-
-.open {
-  display: none;
-}
-
- /* End Side Menu Styles */
-
 .tickets-content {
   display: grid;
-  grid-template-rows: 10vh 90vh;
+  grid-template-rows: 10vh 7vh 83vh;
   grid-template-areas:
   "tickets-title-section"
+  "tickets-alert-section"
   "tickets-info-section"
   ;
   width: 100%;
@@ -84,11 +17,25 @@ nav .close-nav {
 .tickets-title-section {
   grid-area: tickets-title-section;
   background-color: rgba(218, 218, 218, 0.57);
-}
-
-.tickets-title-section {
   text-align: center;
   box-shadow: 0 2px 1px -1px gray;
+  min-height: 130px;
+}
+
+.tickets-title-section h1 {
+  margin-top: 18px;
+}
+
+.buy-tickets-button {
+  float: right;
+  margin-right: 40px !important;
+  margin-left: -145px;
+}
+
+.tickets-alert-section {
+  grid-area: tickets-alert-section;
+  width: 80%;
+  margin: 20px auto;
 }
 
 .tickets-info-section {
@@ -101,40 +48,22 @@ nav .close-nav {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 599px) {
-  
-    #side-menu {
-      transition: transform .3s ease-in-out;
-      top: 0;
-      bottom: 0;   
-      min-height: 100vh; 
-      position: fixed;
-      left: -340px;
-    }
-  
-    #side-menu:target {     
-      transform: translateX(340px);
-    }
-  
-    #close {
-      color: #ffffff;
-      font-size: 2em;
-      text-align: center;
-      height: 75px;
-      display: flex;
-      align-content: flex-end;
-      text-decoration: none;
-    }
+.remove-cell {
+  text-align: center;
+}
 
-    #open {
-      color: black;
-      text-decoration: none;
-      display: block;
-    }
+.cancel-tickets-link {
+  text-decoration: none;
+  color: black;
+}
 
-    #menu-close {
-      margin: 20px auto;
-      color: red;
-    }
-  
+.cancel-tickets-link:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.cancel-tickets:hover {
+  z-index: 1;
+  color: red;
+  transition: color 0.3s ease-in-out;
 }

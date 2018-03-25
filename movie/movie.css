@@ -3,74 +3,6 @@ body {
   margin: 0px;
 }
 
-/* Side Menu Styles */
-
-nav {
-  background: #136fd2;
-  height: 100vh;
-  width: 75px;
-}
-
-nav .menu-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-nav .menu-item {
-  color: #ffffff;
-  font-size: 2em;
-  display: inline-block;
-  text-align: center;
-  height: 75px;
-}
-
-nav .menu-item:hover {
-  text-decoration: none;
-  font-size: 2.5em;
-  transition: font-size 0.5s ease-in-out, background-color 0.5s ease-in-out;
-  background-color: #13549a;
-}
-
-.profile-item {
-  background-color: #6717d2;
-  color: #ffffff;
-  border: 1px solid; 
-  text-align: center;
-  font-size: 2em;
-  display: inline-block;
-}
-
-#profile-item {
-  margin: 20px auto;
-}
-
-#menu-item {
-  margin: 20px auto;
-}
-
-nav .close-nav {
-  display: none;
-}
-
-.dashboard-content {
-  grid-template-columns: 1fr;
-  width: 100%;
-  height: 500px;
-}
-
-.close {
-  display: none;
-}
-
-.open {
-  display: none;
-}
-
- /* End Side Menu Styles */
-
 .movie-content {
   display: grid;
   grid-template-columns: 30% 60% 10%;
@@ -118,7 +50,6 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 80px;
-  margin-left: 40px;
 }
 
 .movie-info-title-badge {
@@ -129,7 +60,6 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .movie-info-run-time-badge {
@@ -140,7 +70,6 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .movie-info-rating-badge {
@@ -151,18 +80,20 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .movie-info-synopsis-badge {
   width: 140px;
 }
 
+.movie-info-synopsis-field {
+  width: 70%;
+}
+
 .movie-info-director {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .movie-info-director-badge {
@@ -173,7 +104,6 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .movie-info-production-company-badge {
@@ -184,7 +114,6 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .movie-info-supplier-name-badge {
@@ -195,7 +124,6 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .movie-info-start-date-badge {
@@ -206,55 +134,99 @@ nav .close-nav {
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-left: 40px;
 }
 
 .movie-info-end-date-badge {
   width: 140px;
 }
 
+#movie-create-button {
+  margin: 80px auto 0;
+}
+
 #movie-edit-button {
-  margin: 0 auto;
+  margin: 20px auto 0;
 }
 
 .flex-display {
   display: flex;
 }
 
-@media only screen and (max-width: 599px) {
-  
-    #side-menu {
-      transition: transform .3s ease-in-out;
-      top: 0;
-      bottom: 0;   
-      min-height: 100vh; 
-      position: fixed;
-      left: -340px;
-    }
-  
-    #side-menu:target {     
-      transform: translateX(340px);
-    }
-  
-    #close {
-      color: #ffffff;
-      font-size: 2em;
-      text-align: center;
-      height: 75px;
-      display: flex;
-      align-content: flex-end;
-      text-decoration: none;
-    }
+/* Edit Movie Styles */
 
-    #open {
-      color: black;
-      text-decoration: none;
-      display: block;
-    }
 
-    #menu-close {
-      margin: 20px auto;
-      color: red;
-    }
-  
+.movie-edit-info-movie-title {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
 }
+
+.movie-edit-info-movie-synopsis {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-edit-info-run-time {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-edit-info-rating {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-edit-info-director {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-edit-info-production-company {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-edit-info-supplier {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-edit-info-start-date {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  justify-content: space-between;
+}
+
+.movie-edit-info-start-date-badge {
+  width: 140px;
+}
+
+.movie-edit-info-end-date {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  justify-content: space-between;
+}
+
+.movie-edit-info-end-date-badge {
+  width: 140px;
+}
+
+.movie-edit-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.date-field {
+  width: 180px !important;
+}
+
+/* End Edit Movie Styles */

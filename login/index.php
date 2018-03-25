@@ -7,7 +7,7 @@
   if (isset($_POST['login_button'])) {
     $account_number = $_POST['account_number'];
     $user_password = $_POST['password'];
-    $validate_customer = "SELECT account_number, password FROM customer WHERE account_number='" . $account_number . "'";
+    $validate_customer = "SELECT id, password, role FROM customer WHERE account_number='" . $account_number . "'";
     $result = $conn->query($validate_customer);
     
     if (!$result) {
@@ -22,9 +22,11 @@
         $customer_credentials = $row;
       }
       if ($customer_credentials["password"] == $user_password) {
-        $_SESSION["account_number"] = $customer_credentials["account_number"];
+        $_SESSION["account_number"] = $account_number;
+        $_SESSION["user_id"] = $customer_credentials["id"];
+        $_SESSION["user_role"] = $customer_credentials["role"];
         $_SESSION["logged_in"] = true;
-        header("Location: ../showtimes");
+        header("Location: ../reservation-complex");
         exit();
       } else {
         $_SESSION["password_error"] = true;

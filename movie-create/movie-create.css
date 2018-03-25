@@ -1,0 +1,115 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+.movie-create-content {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  grid-template-areas: 
+  "movie-create-picture-section movie-create-info-section movie-create-edit-section";
+  height: 100vh;
+  width: 100%;
+}
+
+.movie-create-picture-section {
+  grid-area: movie-create-picture-section;
+  padding: 20px;
+  text-align: center;
+}
+
+.movie-create-info-section {
+  grid-area: movie-create-info-section;
+}
+
+.movie-create-edit-section {
+  grid-area: movie-create-edit-section;
+}
+
+.movie-create-default-image {
+  width: 100%;
+  max-width: 200px;
+  margin: 50px auto 0;
+  background-color: brown;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.movie-create-movie-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#movie-create-image {
+  font-size: 6em;
+  margin: 0 auto;
+}
+
+.movie-create-info-movie-title {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.movie-create-info-movie-synopsis {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-create-info-run-time {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-create-info-rating {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-create-info-director {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-create-info-production-company {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-create-info-supplier {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-create-info-start-date {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-create-info-start-date-badge {
+  width: 140px;
+}
+
+.movie-create-info-end-date {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.movie-create-info-end-date-badge {
+  width: 140px;
+}
+
+.movie-create-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

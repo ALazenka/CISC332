@@ -1,0 +1,93 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+.review-create-content {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  grid-template-areas: 
+  "review-create-picture-section review-create-info-section review-create-edit-section";
+  height: 100vh;
+  width: 100%;
+}
+
+.review-create-picture-section {
+  grid-area: review-create-picture-section;
+  padding: 20px;
+  text-align: center;
+}
+
+.review-create-info-section {
+  grid-area: review-create-info-section;
+}
+
+.review-create-edit-section {
+  grid-area: review-create-edit-section;
+}
+
+.review-create-default-image {
+  width: 100%;
+  max-width: 200px;
+  margin: 50px auto 0;
+  background-color: brown;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.review-create-review-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#review-create-image {
+  font-size: 6em;
+  margin: 0 auto;
+}
+
+.review-create-info-movie-select {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.review-create-info-movie-select-badge {
+  width: 140px;
+}
+
+.review-create-info-score-select {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.review-create-info-score-select-badge {
+  width: 140px;
+}
+
+.review-create-info-review-title {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.review-create-info-review-title-badge {
+  width: 140px;
+}
+
+.review-create-info-review-content {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.review-create-info-review-content-badge {
+  width: 140px;
+}
+
+.review-create-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
