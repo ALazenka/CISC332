@@ -9,14 +9,11 @@
   $reviews = [];
   $get_reviews = "SELECT review.title as review_title, movie.title as movie_title, firstname, lastname, score, review.id as id
                   FROM review
-                  JOIN customer_review 
-                    ON review.id=customer_review.review_id 
                   JOIN customer 
-                    ON customer_review.customer_id=customer.id
-                  JOIN movie_review
-                    ON review.id=movie_review.review_id
+                    ON review.customer_id=customer.id
                   JOIN movie
-                    ON movie_review.movie_id=movie.id";
+                    ON review.movie_id=movie.id
+                  ORDER BY customer.firstname, movie_title";
   $result = $conn->query($get_reviews);
   if (!$result) {
     echo 'Could not run query: ' . mysql_error();
@@ -62,7 +59,6 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">ID</th>
               <th scope="col">Author</th>
               <th scope="col">Title</th>
               <th scope="col">Movie Name</th>
@@ -75,7 +71,6 @@
                 
             ?>
             <tr class="table-item" onclick="location.href = '/CISC332/review-details/?review_id=<?php echo $review['id']; ?>';">
-              <th scope="row"><?php echo $review['id']; ?></th>
               <td><?php echo $review['firstname'] . ' ' . $review['lastname']; ?></td>
               <td><?php echo $review['review_title']; ?></td>
               <td><?php echo $review['movie_title']; ?></td>

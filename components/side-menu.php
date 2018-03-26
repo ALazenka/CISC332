@@ -18,14 +18,14 @@
     <?php
       if ($_SESSION["user_role"] == 1) {
     ?>
-      <a class="menu-item" href="/CISC332/theater-complex" data-toggle="tooltip" data-placement="right" title="Manage Theater Complexes">
+      <a class="menu-item" href="/CISC332/theater-complex" data-toggle="tooltip" data-placement="right" title="Manage Theaters">
         <i class="fas fa-tv" id="menu-item"></i>
       </a>
-      <a class="menu-item" href="/CISC332/logout" data-toggle="tooltip" data-placement="right" title="Manage Showings">
-        <i class="fas fa-list" id="profile-item"></i>
+      <a class="menu-item" href="/CISC332/showings" data-toggle="tooltip" data-placement="right" title="Manage Showings">
+        <i class="fas fa-list" id="menu-item"></i>
       </a>
-      <a class="menu-item" href="/CISC332/admin" data-toggle="tooltip" data-placement="right" title="Admin">
-        <i class="fas fa-lock" id="profile-item"></i>
+      <a class="menu-item" href="/CISC332/admin" data-toggle="tooltip" data-placement="right" title="Admin Stats">
+        <i class="fas fa-chart-line" id="menu-item"></i>
       </a>
       <a class="menu-item" href="/CISC332/members" data-toggle="tooltip" data-placement="right" title="Members">
         <i class="fas fa-users" id="menu-item"></i>
@@ -34,10 +34,10 @@
       }
     ?>
     <a class="menu-item" href="/CISC332/profile" data-toggle="tooltip" data-placement="right" title="Profile">
-      <i class="far fa-user" id="profile-item"></i>
+      <i class="far fa-user" id="menu-item"></i>
     </a>
     <a class="menu-item" href="/CISC332/logout" data-toggle="tooltip" data-placement="right" title="Logout">
-      <i class="fas fa-sign-out-alt" id="profile-item"></i>
+      <i class="fas fa-sign-out-alt" id="menu-item"></i>
     </a>
   </ul>
 </nav>

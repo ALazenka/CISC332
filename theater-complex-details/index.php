@@ -25,22 +25,22 @@
     }
   };
   
-  if (isset($_POST["theater-complex-edit-button"])) {
+  if (isset($_POST["complex-edit-button"])) {
     $name = $_POST["name"];
-    $phone = $_POST["phone"];
+    $phone_number = $_POST["phone_number"];
     $street = $_POST["street"];
     $town = $_POST["town"];
     $province = $_POST["province"];
     $country = $_POST["country"];
     $postalcode = $_POST["postalcode"];
-    $create_complex = "INSERT INTO theater_complex (`name`, `phone_number`, `street`, `town`, `province`, `country`, `postalcode`)
-                      VALUES ('$name', '$phone', '$street', '$town', '$province', '$country', '$postalcode')";
+    $complex_id = $_SESSION["edit_complex_id"];
+    $create_complex = "UPDATE Theater_Complex SET name = '$name', street = '$street', town = '$town', postalcode = '$postalcode', province = '$province', country = '$country', phone_number = '$phone_number' WHERE id = '$complex_id'";
     $conn->query($create_complex);
-    $_SESSION["complex_create_success"] = true;
+    $_SESSION["complex_edit_success"] = true;
     header("Location: ../theater-complex");
   }
 
-  $get_complex_info = "SELECT * FROM theater_complex";
+  $get_complex_info = "SELECT * FROM theater_complex WHERE id = $complex_id";
   $result = $conn->query($get_complex_info);
   if (!$result) {
     echo 'Could not run query: ' . mysql_error();
@@ -66,7 +66,7 @@
         <i class="fas fa-bars"></i>
       </a>
       <div class="theater-complex-picture-section">
-        <div class="theater-complex-default-image"><i class="far fa-star" id="theater-complex-image" title="Complex"></i></div>
+        <div class="theater-complex-default-image"><i class="fas fa-tv" id="theater-complex-image" title="Complex"></i></div>
         <div class="theater-complex-account-number"><?php echo $complex_info["id"]; ?></div>
       </div>
       <div class="theater-complex-info-section">
@@ -86,39 +86,41 @@
         <?php } else { ?>
         <form action="index.php" method="POST">
           <div class="theater-complex-create-info-name">
-            <input type="text" class="form-control" name="name" placeholder="Complex Name" />
+            <input type="text" class="form-control" name="name" value="<?php echo $complex_info["name"]; ?>" placeholder="Complex Name" />
           </div>
           <div class="theater-complex-create-info-phone">
-            <input type="text" class="form-control" name="phone" placeholder="Phone Number" />
+            <input type="text" class="form-control" name="phone_number" value="<?php echo $complex_info["phone_number"]; ?>" placeholder="Phone Number" />
           </div>
-          <div class="theater-complex-info-address">Address:</div>
+          <div class="theater-complex-create-info-address">Address:</div>
           <div class="flex-display margin-top">
-            <input class="theater-complex-info-name-field form-control" name="street" placeholder="Street" type="text" />
-          </div>
-          <div class="flex-display margin-top">
-            <input class="theater-complex-info-name-field form-control" name="town" placeholder="Town/City" type="text" />
+            <input class="theater-complex-create-info-address-field form-control" name="street" value="<?php echo $complex_info["street"]; ?>" placeholder="Street" type="text" />
           </div>
           <div class="flex-display margin-top">
-            <input class="theater-complex-info-name-field form-control" name="province" placeholder="State/Province" type="text" />
+            <input class="theater-complex-create-info-address-field form-control" name="town" value="<?php echo $complex_info["town"]; ?>" placeholder="Town/City" type="text" />
           </div>
           <div class="flex-display margin-top">
-            <input class="theater-complex-info-name-field form-control" name="country" placeholder="Country" type="text" />
+            <input class="theater-complex-create-info-address-field form-control" name="province" value="<?php echo $complex_info["province"]; ?>" placeholder="State/Province" type="text" />
           </div>
           <div class="flex-display margin-top">
-            <input class="theater-complex-info-name-field form-control" name="postalcode" placeholder="Postal Code" type="text" />
+            <input class="theater-complex-create-info-address-field form-control" name="country" value="<?php echo $complex_info["country"]; ?>" placeholder="Country" type="text" />
+          </div>
+          <div class="flex-display margin-top">
+            <input class="theater-complex-create-info-address-field form-control" name="postalcode" value="<?php echo $complex_info["postalcode"]; ?>" placeholder="Postal Code" type="text" />
           </div>
           <div class="theater-complex-create-button-container">
-            <input name="theater-complex-create-button" type="submit" class="btn btn-success" value="Create Complex" />
+            <input name="complex-edit-button" type="submit" class="btn btn-success" value="Edit Complex" />
           </div>
         </form>
         <?php } ?>
       </div>
       <div class="theater-complex-edit-section">
         <?php
-          if ($_SESSION["user_role"] == 1) {
+          if (!$complex_edit) { 
+            if ($_SESSION["user_role"] == 1) {
         ?>
           <button id="theater-complex-edit-button" type="button" class="btn btn-primary" onclick="location.href = '/CISC332/theater-complex-details/?edit_id=<?php echo $complex_info["id"]; ?>'">Edit</button>
         <?php
+            }
           }
         ?>
       </div>

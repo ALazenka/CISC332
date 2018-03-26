@@ -15,8 +15,10 @@ CREATE TABLE Theater
   theater_number INT NOT NULL,
   max_seats INT NOT NULL,
   screen_size VARCHAR(20) NOT NULL,
+  theater_complex_id INT NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (id));
+  PRIMARY KEY (id),
+  KEY (theater_complex_id));
 
 CREATE TABLE Movie_Supplier
 (
@@ -47,6 +49,7 @@ CREATE TABLE Customer
   email_address VARCHAR(50) NOT NULL,
   cc_number BIGINT NOT NULL,
   cc_expiry_date VARCHAR(50) NOT NULL,
+  role INT NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (id),
   UNIQUE (account_number),
@@ -56,7 +59,7 @@ CREATE TABLE Movie
 (
   title VARCHAR(50) NOT NULL,
   run_time NUMERIC NOT NULL,
-  rating VARCHAR(2) NOT NULL,
+  rating VARCHAR(5) NOT NULL,
   synopsis VARCHAR(1000) NOT NULL,
   director VARCHAR(50) NOT NULL,
   production_company VARCHAR(50) NOT NULL,
@@ -82,7 +85,7 @@ CREATE TABLE Review
   movie_id INT NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (id),
-  UNIQUE (movie_id));
+  KEY (movie_id));
 
 CREATE TABLE Showing
 (
@@ -104,7 +107,7 @@ CREATE TABLE customer_res
   customer_id INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (customer_id) REFERENCES Customer(id),
-  FOREIGN KEY (reservation_id) REFERENCES Reservation(movie_id));
+  FOREIGN KEY (reservation_id) REFERENCES Reservation(id));
 
 CREATE TABLE movie_review
 (

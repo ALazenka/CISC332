@@ -10,19 +10,20 @@
   $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
   $complex_id = 0;
   foreach (parse_url($url) as &$item) {
-    if (strpos($item, 'id=') !== false) {
+    if (strpos($item, 'complex_id=') !== false) {
       $complex_id = str_replace("complex_id=", "", $item);
     } 
   };
   $get_showtimes = "SELECT showing.id as id, movie.title as movie_title, theater_complex.name as complex_name, theater.theater_number, showing.start_time, movie.run_time
-            FROM showing 
-            JOIN theater_complex 
-              ON theater_complex.id=showing.theater_complex_id 
-            JOIN theater 
-              ON showing.theater_id=theater.id
-            JOIN movie
-              ON showing.movie_id=movie.id
-            WHERE theater_complex_id=$complex_id";
+                    FROM showing 
+                    JOIN theater_complex 
+                      ON theater_complex.id=showing.theater_complex_id 
+                    JOIN theater 
+                      ON showing.theater_id=theater.id
+                    JOIN movie
+                      ON showing.movie_id=movie.id
+                    WHERE theater_complex.id=$complex_id
+                    ORDER BY movie_title";
   $result = $conn->query($get_showtimes);
 
   if (!$result) {

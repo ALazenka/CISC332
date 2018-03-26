@@ -10,14 +10,6 @@
     $_SESSION["user_role_redirect"] = true;
     header("Location: ../reservation-complex");
   }
-
-  $movie_id = 0;
-  $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-  foreach (parse_url($url) as &$item) {
-    if (strpos($item, 'movie_id=') !== false) {
-      $movie_id = str_replace("movie_id=", "", $item);
-    } 
-  };
   
   if (isset($_POST["theater-complex-create-button"])) {
     $name = $_POST["name"];

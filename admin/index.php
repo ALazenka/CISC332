@@ -6,6 +6,11 @@
     header("Location: ../login");
   }
 
+  if (isset($_SESSION["user_role"]) && $_SESSION["user_role"] != 1) {
+    $_SESSION["user_role_redirect"] = true;
+    header("Location: ../reservation-complex");
+  }
+
   $popular_movie = "";
   $popular_theater = "";
   $tickets_sold = "SELECT showing.id, sum(reservation.tickets_reserved) as tickets_purchased, movie.title

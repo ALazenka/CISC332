@@ -36,16 +36,13 @@ body {
   grid-area: tickets-alert-section;
   width: 80%;
   margin: 20px auto;
+  text-align: center;
 }
 
 .tickets-info-section {
   grid-area: tickets-info-section;
   width: 80%;
   margin: 0 auto;
-}
-
-.table-item {
-  cursor: pointer;
 }
 
 .remove-cell {

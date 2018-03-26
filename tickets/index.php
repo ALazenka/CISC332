@@ -30,7 +30,15 @@
   };
 
   $tickets = [];
-  $get_tickets = "SELECT reservation.id as id, movie.title as movie_title, reservation.tickets_reserved, showing.start_time FROM reservation JOIN showing ON showing.id=reservation.showing_id JOIN movie on movie.id=showing.movie_id WHERE reservation.account_number=" . $_SESSION["account_number"];
+  $get_tickets = "SELECT reservation.id as id, movie.title as movie_title, reservation.tickets_reserved, showing.start_time, theater_complex.name as complex_name
+                  FROM reservation
+                  JOIN showing
+                    ON showing.id=reservation.showing_id
+                  JOIN movie
+                    ON movie.id=showing.movie_id
+                  JOIN theater_complex
+                    ON showing.theater_complex_id=theater_complex.id
+                  WHERE reservation.account_number=" . $_SESSION["account_number"];
   $result = $conn->query($get_tickets);
   if (!$result) {
     echo 'Could not run query: ' . mysql_error();
@@ -58,7 +66,7 @@
       </a>
       <div class="tickets-title-section">
         <h1 class="tickets-title">Tickets
-        <a class="btn btn-success buy-tickets-button" href="/CISC332/theater-complex" role="button">Buy Tickets</a></h1>
+        <a class="btn btn-success buy-tickets-button" href="/CISC332/reservation-complex" role="button">Buy Tickets</a></h1>
         <h4>Purchased Tickets for Upcoming Shows</h4>
       </div>
       <?php
@@ -72,11 +80,11 @@
         }
       ?>
       <div class="tickets-info-section">
-        <table class="table table-hover">
+        <table class="table">
           <thead>
             <tr>
-              <th scope="col">ID</th>
               <th scope="col">Movie Name</th>
+              <th scope="col">Theater Complex Name</th>
               <th scope="col">Tickets Reserved</th>
               <th scope="col">Start Time</th>
               <th scope="col">Cancel Tickets</th>
@@ -87,9 +95,9 @@
               foreach ($tickets as &$ticket) {
                 
             ?>
-            <tr class="table-item" onclick="location.href = '/CISC332/ticket-details/?id=<?php echo $ticket['id']; ?>';">
-              <th scope="row"><?php echo $ticket['id']; ?></th>
+            <tr class="table-item">
               <td><?php echo $ticket['movie_title']; ?></td>
+              <td><?php echo $ticket['complex_name']; ?></td>
               <td><?php echo $ticket['tickets_reserved']; ?></td>
               <td><?php echo $ticket['start_time']; ?></td>
               <td class="remove-cell">

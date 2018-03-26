@@ -24,6 +24,7 @@ body {
 
 .theater-complex-title-section h1 {
   margin-top: 18px;
+  margin-left: 270px;
 }
 
 .theater-complex-alert-section {
@@ -42,9 +43,23 @@ body {
 .add-complex-button {
   float: right;
   margin-right: 40px !important;
-  margin-left: -145px;
+  margin-left: -20px;
+}
+
+.add-theater-button {
+  float: right;
+  margin-right: 40px !important;
+  margin-left: -20px;
 }
 
 .table-item {
   cursor: pointer;
+}
+
+h4 {
+  text-align: center;
+}
+
+.lower-table {
+  margin-top: 40px;
 }
