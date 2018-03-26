@@ -1,0 +1,109 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+.theater-create-content {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  grid-template-areas: 
+  "theater-create-picture-section theater-create-info-section theater-create-edit-section";
+  height: 100vh;
+  width: 100%;
+}
+
+.theater-create-picture-section {
+  grid-area: theater-create-picture-section;
+  padding: 20px;
+  text-align: center;
+}
+
+.theater-create-info-section {
+  grid-area: theater-create-info-section;
+}
+
+.theater-create-edit-section {
+  grid-area: theater-create-edit-section;
+}
+
+.theater-create-default-image {
+  width: 100%;
+  max-width: 200px;
+  margin: 50px auto 0;
+  background-color: brown;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.theater-create-theater-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#theater-create-image {
+  font-size: 6em;
+  margin: 0 auto;
+}
+
+.theater-create-info-theater-complex {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.theater-create-info-theater-complex-badge {
+  width: 140px;
+}
+
+.theater-create-info-theater-number {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.theater-create-info-seats {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.theater-create-info-theater-number-badge {
+  width: 140px;
+}
+
+.theater-create-info-screen-size {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.theater-create-info-screen-size-badge {
+  width: 140px;
+}
+
+#theater-create-button {
+  margin: 80px auto 0;
+}
+
+.theater-create-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.theater-info-address {
+  margin-top: 20px;
+}
+
+.flex-display {
+  display: flex;
+}
+
+.sign-up-info-address-badge {
+  width: 140px;
+}
+
+.margin-top {
+  margin-top: 20px;
+}

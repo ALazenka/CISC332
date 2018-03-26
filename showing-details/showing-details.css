@@ -1,0 +1,179 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+.showing-content {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  grid-template-areas: 
+  "showing-picture-section showing-info-section showing-edit-section";
+  height: 100vh;
+  width: 100%;
+}
+
+.showing-picture-section {
+  grid-area: showing-picture-section;
+  padding: 20px;
+  text-align: center;
+}
+
+.showing-info-section {
+  grid-area: showing-info-section;
+}
+
+.showing-edit-section {
+  grid-area: showing-edit-section;
+}
+
+.showing-default-image {
+  width: 100%;
+  max-width: 200px;
+  margin: 50px auto 0;
+  background-color: brown;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.showing-account-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#showing-image {
+  font-size: 6em;
+  margin: 0 auto;
+}
+
+.showing-info-movie-title {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-info-movie-title-badge {
+  width: 140px;
+}
+
+.showing-info-start-time {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-info-start-time-badge {
+  width: 140px;
+}
+
+.showing-info-complex {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.showing-info-complex-badge {
+  width: 140px;
+}
+
+.showing-info-complex-address {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-info-complex-address-badge {
+  width: 140px;
+}
+
+.showing-info-theater-number {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-info-theater-number-badge {
+  width: 140px;
+}
+
+.showing-info-tickets {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-info-tickets-badge {
+  width: 140px;
+}
+
+.showing-info-total-cost {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-info-total-cost-badge {
+  width: 140px;
+}
+
+.showing-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.flex-display {
+  display: flex;
+}
+
+.tickets-dropdown {
+  width: 100px !important;
+}
+
+#showing-edit-button {
+  margin: 80px auto 0;
+}
+
+/* Showing Details Edit Styles */
+.showing-edit-info-complex {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.showing-edit-info-complex-badge {
+  width: 140px;
+}
+
+.showing-edit-info-theater-number {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-edit-info-theater-number-badge {
+  width: 140px;
+}
+
+.showing-edit-info-movie {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-edit-info-movie-badge {
+  width: 140px;
+}
+
+.showing-edit-info-start-time {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-edit-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+

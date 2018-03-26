@@ -57,10 +57,9 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">ID</th>
               <th scope="col">Title</th>
               <th scope="col">Run Time (Minutes)</th>
-              <th scope="col">Duration</th>
+              <th scope="col">Rating</th>
             </tr>
           </thead>
           <tbody>
@@ -68,7 +67,6 @@
               foreach ($movie_list as &$movie) {
             ?>
             <tr class="table-item" onclick="location.href = '/CISC332/movie/?movie_id=<?php echo $movie['id']; ?>';">
-              <th scope="row"><?php echo $movie['id']; ?></th>
               <td><?php echo $movie['title']; ?></td>
               <td><?php echo $movie['run_time']; ?></td>
               <td><?php echo $movie['rating']; ?></td>

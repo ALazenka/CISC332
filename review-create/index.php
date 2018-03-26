@@ -19,22 +19,25 @@
     $review_title = $_POST["review_title"];
     $review_content = $_POST["review_content"];
     $review_score = $_POST["review_score"];
-    $create_review = "INSERT INTO review (`title`, `content`, `score`, `movie_id`, `id`)
-                      VALUES ('$review_title', '$review_content', '$review_score', '$movie_id', NULL)";
+    $customer_id = $_SESSION["user_id"];
+    $create_review = "INSERT INTO Review (`title`, `content`, `score`, `movie_id`, `customer_id`, `id`)
+                      VALUES ('$review_title', '$review_content', '$review_score', '$movie_id', '$customer_id', '')";
     $conn->query($create_review);
     $get_reviews = "SELECT * FROM review ORDER BY id DESC";
     $review_list = $conn->query($get_reviews);
     $loop_count = 0;
+    $new_review = "";
     while($loop_count != 1 && $row = $review_list->fetch_assoc()) {
       $new_review = $row;
-      $create_customer_review = "INSERT INTO customer_review
-                        VALUES ('', '" . $_SESSION['user_id'] . "', '" . $new_review["id"] . "')";
-      $create_movie_review = "INSERT INTO movie_review
-                        VALUES ('', '" . $new_review["id"] . "', '" . $movie_id . "')";
-      $conn->query($create_customer_review);
-      $conn->query($create_movie_review);
       $loop_count++;
     }
+    echo $new_review["id"];
+    $create_customer_review = "INSERT INTO customer_review
+                      VALUES ('', '" . $_SESSION['user_id'] . "', '" . $new_review["id"] . "')";
+    $create_movie_review = "INSERT INTO movie_review
+                      VALUES ('', '" . $new_review["id"] . "', '" . $movie_id . "')";
+    $conn->query($create_customer_review);
+    $conn->query($create_movie_review);
     $_SESSION["review_create_success"] = true;
     header("Location: ../reviews");
   }

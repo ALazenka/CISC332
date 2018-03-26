@@ -24,10 +24,8 @@
                       FROM review
                       JOIN movie
                         ON review.movie_id=movie.id
-                      JOIN customer_review 
-                        ON review.id=customer_review.review_id 
                       JOIN customer 
-                        ON customer_review.customer_id=customer.id
+                        ON review.customer_id=customer.id
                       WHERE review.id='" . $review_id . "'";
   $result = $conn->query($get_review_info);
   if (!$result) {

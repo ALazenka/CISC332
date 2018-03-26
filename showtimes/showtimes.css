@@ -28,7 +28,7 @@ body {
 .showtimes-info-section {
   grid-area: showtimes-info-section;
   width: 80%;
-  margin: 0 auto;
+  margin: 80px auto 0;
 }
 
 .table-item {

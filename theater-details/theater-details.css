@@ -3,30 +3,30 @@ body {
   margin: 0px;
 }
 
-.theater-complex-content {
+.theater-content {
   display: grid;
   grid-template-columns: 30% 60% 10%;
   grid-template-areas: 
-  "theater-complex-picture-section theater-complex-info-section theater-complex-edit-section";
+  "theater-picture-section theater-info-section theater-edit-section";
   height: 100vh;
   width: 100%;
 }
 
-.theater-complex-picture-section {
-  grid-area: theater-complex-picture-section;
+.theater-picture-section {
+  grid-area: theater-picture-section;
   padding: 20px;
   text-align: center;
 }
 
-.theater-complex-info-section {
-  grid-area: theater-complex-info-section;
+.theater-info-section {
+  grid-area: theater-info-section;
 }
 
-.theater-complex-edit-section {
-  grid-area: theater-complex-edit-section;
+.theater-edit-section {
+  grid-area: theater-edit-section;
 }
 
-.theater-complex-default-image {
+.theater-default-image {
   width: 100%;
   max-width: 200px;
   margin: 50px auto 0;
@@ -36,92 +36,101 @@ body {
   border-radius: 20px;
 }
 
-.theater-complex-account-number {
+.theater-account-number {
   font-size: 2em;
   margin-top: 20px;
 }
 
-#theater-complex-image {
+#theater-image {
   font-size: 6em;
   margin: 0 auto;
 }
 
-.theater-complex-info-name {
+.theater-info-theater-complex {
   display: flex;
   width: 100%;
   margin-top: 80px;
 }
 
-.theater-complex-info-name-badge {
+.theater-info-theater-complex-badge {
   width: 140px;
 }
 
-.theater-complex-info-phone {
+.theater-info-theater-number {
   display: flex;
   width: 100%;
   margin-top: 40px;
 }
 
-.theater-complex-info-phone-badge {
+.theater-info-theater-number-badge {
   width: 140px;
 }
 
-.theater-complex-info-address {
+.theater-info-screen-size {
   display: flex;
   width: 100%;
   margin-top: 40px;
 }
 
-.theater-complex-info-address-field {
-  display: flex;
-  width: 100%;
-}
-
-.theater-complex-info-address-badge {
+.theater-info-screen-size-badge {
   width: 140px;
 }
 
-.theater-complex-create-info-name {
+.theater-info-max-seats {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.theater-info-max-seats-badge {
+  width: 140px;
+}
+
+.theater-edit-info-theater-complex {
   display: flex;
   width: 100%;
   margin-top: 80px;
 }
 
-.theater-complex-create-info-name-badge {
+.theater-edit-info-theater-complex-badge {
   width: 140px;
 }
 
-.theater-complex-create-info-phone {
+.theater-edit-info-theater-number {
   display: flex;
   width: 100%;
   margin-top: 40px;
 }
 
-.theater-complex-create-info-phone-badge {
+.theater-edit-info-theater-number-badge {
   width: 140px;
 }
 
-.theater-complex-create-info-address {
+.theater-edit-info-screen-size {
   display: flex;
   width: 100%;
   margin-top: 40px;
 }
 
-.theater-complex-create-info-address-field {
-  display: flex;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.theater-complex-create-info-address-badge {
+.theater-edit-info-screen-size-badge {
   width: 140px;
 }
 
-#theater-complex-edit-button {
+.theater-edit-info-max-seats {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.theater-edit-info-max-seats-badge {
+  width: 140px;
+}
+
+#theater-edit-button {
   margin: 80px auto 0;
 }
 
-.theater-complex-create-button-container {
+.theater-edit-button-container {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;

@@ -43,7 +43,7 @@
       $_SESSION["password_match_error"] = false;
       $_SESSION["duplicate_email"] = false;
       $_SESSION["account_number"] = $customer_account_number;
-      header("Location: ../theater-complex");
+      header("Location: ../reservation-complex");
     }
   }
   $conn->close();
@@ -132,7 +132,9 @@
           <div class="sign-up-info-credit-card-expiry">
             <input class="sign-up-info-name-field form-control" name="cc_expiry" placeholder="Credit Card Expiry Date" type="text" />
           </div>
-          <input id="sign-up-save-button" name="create-button" type="submit" class="btn btn-success" value="Create Account" />
+          <div class="sign-up-button-container">
+            <input id="sign-up-save-button" name="create-button" type="submit" class="btn btn-success" value="Create Account" />
+          </div>
         </form>
       </div>
     </main>

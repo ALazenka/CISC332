@@ -6,26 +6,27 @@
     header("Location: ../login");
   }
 
-
-  $showtime_info = [];
+  $showtime_info = "";
   $showing_tickets = "";
   $over_ticket_count = false;
-
+  $ticket_override = false;
+  $showtime_id = 0;
   $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
   foreach (parse_url($url) as &$item) {
-    if (strpos($item, 'id=') !== false) {
-      $_SESSION["showtime_id"] = str_replace("showtime_id=", "", $item);
+    if (strpos($item, 'showtime_id=') !== false) {
+      $showtime_id = str_replace("showtime_id=", "", $item);
+      $_SESSION["showtime_id"] = $showtime_id;
     } 
   };
 
   if (isset($_POST["checkout-complete"])) {
-    $showtime_id = $_SESSION['showtime_id'];
-    $check_ticket_limit = "SELECT showing.id, showing.seats_available - sum(reservation.tickets_reserved) as tickets_available
+    $showtime_id = $_SESSION["showtime_id"];
+    $check_ticket_limit = "SELECT showing.id, theater.max_seats - sum(reservation.tickets_reserved) as tickets_available, theater.max_seats
                           FROM showing
-                          JOIN
-                            reservation
-                          ON
-                            showing.id=reservation.showing_id
+                          JOIN reservation
+                            ON showing.id=reservation.showing_id
+                          JOIN theater
+                            ON showing.theater_id=theater.id
                           WHERE showing.id='$showtime_id' GROUP BY showing.id";
     $result = $conn->query($check_ticket_limit);
 
@@ -33,41 +34,42 @@
       while($row = $result->fetch_assoc()) {
         $showing_tickets = $row;
       }
+    } else {
+      $ticket_override = true;
     }
 
-    if ($showing_tickets["tickets_available"] - $_POST["tickets_wanted"] < 0) {
-      $over_ticket_count = true;
-    } else {
+    if ($showing_tickets["tickets_available"] - $_POST["tickets_wanted"] >= 0 || $ticket_override) {
       $account_number = $_SESSION["account_number"];
       $tickets_wanted = $_POST["tickets_wanted"];
-      $create_reservation = "INSERT INTO reservation
-                      VALUES ('$account_number', '$showtime_id', '$tickets_wanted', '')";
+      $create_reservation = "INSERT INTO `Reservation` (`account_number`, `showing_id`, `tickets_reserved`, `id`) VALUES ('$account_number', '$showtime_id', '$tickets_wanted', '')";
       $conn->query($create_reservation);
       $_SESSION["reservation_success"] = true;
-      header("Location: ../theater-complex");
+      header("Location: ../reservation-complex");
+    } else {
+      $over_ticket_count = true;
     }
   }
 
   $get_showtime_info = "SELECT
-                          showing.id as id,
-                          movie.title as movie_title,
-                          theater_complex.name as complex_name,
-                          theater_complex.street,
-                          theater_complex.town,
-                          theater_complex.province,
-                          theater_complex.country,
-                          theater_complex.postalcode,
-                          theater.theater_number,
-                          showing.start_time,
-                          movie.run_time
-                        FROM showing 
-                        JOIN theater_complex 
-                          ON theater_complex.id=showing.theater_complex_id 
-                        JOIN theater 
-                          ON showing.theater_id=theater.id
-                        JOIN movie
-                          ON showing.movie_id=movie.id
-                        WHERE showing.id=" . $_SESSION['showtime_id'];
+                        showing.id as id,
+                        movie.title as movie_title,
+                        theater_complex.name as complex_name,
+                        theater_complex.street,
+                        theater_complex.town,
+                        theater_complex.province,
+                        theater_complex.country,
+                        theater_complex.postalcode,
+                        theater.theater_number,
+                        showing.start_time,
+                        movie.run_time
+                      FROM showing 
+                      JOIN theater_complex 
+                        ON theater_complex.id=showing.theater_complex_id 
+                      JOIN theater 
+                        ON showing.theater_id=theater.id
+                      JOIN movie
+                        ON showing.movie_id=movie.id
+                      WHERE showing.id=" . $showtime_id;
 
   $result = $conn->query($get_showtime_info);
   $conn->close();
@@ -94,7 +96,7 @@
         <i class="fas fa-bars"></i>
       </a>
       <div class="checkout-picture-section">
-        <div class="checkout-default-image"><i class="fas fa-ticket-alt" id="checkout-image" title="Review"></i></div>
+        <div class="checkout-default-image"><i class="fas fa-video" id="checkout-image" title="Checkout"></i></div>
         <div class="checkout-account-number">Reservation Checkout</div>
       </div>
       <div class="checkout-info-section">
@@ -132,10 +134,6 @@
               ?>
             </select>
           </div>
-          <!-- <div class="checkout-info-total-cost">
-            <div class="checkout-info-total-cost-badge">Total Cost:</div>
-            <div class="checkout-info-total-cost-field">*money goes here*</div>
-          </div> -->
           <div class="checkout-button">
             <input id="checkout-complete-button" name="checkout-complete" type="submit" class="btn btn-success" value="Reserve Tickets" />
           </div>

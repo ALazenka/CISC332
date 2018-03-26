@@ -1,0 +1,89 @@
+body {
+  display: flex;
+  margin: 0px;
+}
+
+.showing-create-content {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  grid-template-areas: 
+  "showing-create-picture-section showing-create-info-section showing-create-edit-section";
+  height: 100vh;
+  width: 100%;
+}
+
+.showing-create-picture-section {
+  grid-area: showing-create-picture-section;
+  padding: 20px;
+  text-align: center;
+}
+
+.showing-create-info-section {
+  grid-area: showing-create-info-section;
+}
+
+.showing-create-edit-section {
+  grid-area: showing-create-edit-section;
+}
+
+.showing-create-default-image {
+  width: 100%;
+  max-width: 200px;
+  margin: 50px auto 0;
+  background-color: brown;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.showing-create-showing-number {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#showing-create-image {
+  font-size: 6em;
+  margin: 0 auto;
+}
+
+.showing-create-info-complex {
+  display: flex;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.showing-create-info-complex-badge {
+  width: 140px;
+}
+
+.showing-create-info-theater-number {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-create-info-theater-number-badge {
+  width: 140px;
+}
+
+.showing-create-info-movie {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-create-info-movie-badge {
+  width: 140px;
+}
+
+.showing-create-info-start-time {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.showing-create-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

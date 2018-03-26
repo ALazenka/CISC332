@@ -178,15 +178,22 @@
           <div class="movie-edit-button-container">
             <input name="movie-edit-button" type="submit" class="btn btn-success" value="Edit Movie" />
           </div>
-        <?php } ?>
+        <?php }
+          if (!$movie_edit) {
+        ?>
         <div class="movie-edit-section">
-          <?php
-            if ($_SESSION["user_role"] == 1 && !$movie_edit) {
-          ?>
+          <div>
             <button id="movie-create-button" type="button" class="btn btn-success" onclick="location.href = '/CISC332/review-create/?movie_id=<?php echo $movie_info['id']; ?>';">Create Review</button>
-            <button id="movie-edit-button" type="button" class="btn btn-primary" onclick="location.href = '/CISC332/movie/?edit_id=<?php echo $movie_id; ?>'">Edit</button>
+          </div>
+          <?php
+            if ($_SESSION["user_role"] == 1) {
+          ?>
+            <div>
+              <button id="movie-edit-button" type="button" class="btn btn-primary" onclick="location.href = '/CISC332/movie/?edit_id=<?php echo $movie_id; ?>'">Edit</button>
+            </div>
           <?php
             }
+          }
           ?>
         </div>
       </form>

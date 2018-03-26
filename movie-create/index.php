@@ -27,8 +27,12 @@
     $director = $_POST["director"];
     $production_company = $_POST["production_company"];
     $supplier = $_POST["supplier"];
-    $start_date = $_POST["start_date"];
-    $end_date = $_POST["end_date"];
+    $start_date = $_POST["start_date_date"];
+    $start_date .= $_POST["start_date_month"];
+    $start_date .= $_POST["start_date_year"];
+    $end_date = $_POST["end_date_date"];
+    $end_date .= $_POST["end_date_month"];
+    $end_date .= $_POST["end_date_year"];
     $create_movie = "INSERT INTO movie (`title`, `run_time`, `rating`, `synopsis`, `director`, `production_company`, `supplier_name`, `start_date`, `end_date`, `id`)
                       VALUES ('$movie_title', '$run_time', '$rating', '$movie_synopsis', '$director', '$production_company', '$supplier', '$start_date', '$end_date', '')";
     $conn->query($create_movie);
@@ -36,16 +40,8 @@
     header("Location: ../movie-list");
   }
 
-  $movie_list = [];
-  $get_movies = "SELECT * FROM movie";
-  $result_movies = $conn->query($get_movies);
   $ratings = ["PG", "PG-13", "R", "NC-17"];
   $conn->close();
-  if ($result_movies->num_rows > 0) {
-    while($row = $result_movies->fetch_assoc()) {
-      array_push($movie_list, $row);
-    }
-  }
 ?>
 <html>
   <head>
@@ -97,11 +93,15 @@
           </div>
           <div class="movie-create-info-start-date">
             <div class="movie-create-info-start-date-badge">Start Date:</div>
-            <input type="date" class="form-control" name="start_date" value="<?php echo date("Y-m-j"); ?>"></input>
+            <input type="text" class="form-control date-field" name="start_date_year" value="<?php echo $start_date_year; ?>" placeholder="Year" />
+            <input type="text" class="form-control date-field" name="start_date_month" value="<?php echo $start_date_month; ?>" placeholder="Month" />
+            <input type="text" class="form-control date-field" name="start_date_date" value="<?php echo $start_date_day; ?>" placeholder="Date" />
           </div>
           <div class="movie-create-info-end-date">
             <div class="movie-create-info-end-date-badge">End Date:</div>
-            <input type="date" class="form-control" name="end_date"  value="<?php echo date("Y-m-j"); ?>"></input>
+            <input type="text" class="form-control date-field" name="end_date_year" value="<?php echo $end_date_year; ?>" placeholder="Year" />
+            <input type="text" class="form-control date-field" name="end_date_month" value="<?php echo $end_date_month; ?>" placeholder="Month" />
+            <input type="text" class="form-control date-field" name="end_date_date" value="<?php echo $end_date_day; ?>" placeholder="Date" />
           </div>
           <div class="movie-create-button-container">
             <input name="movie-create-button" type="submit" class="btn btn-success" value="Create Movie" />

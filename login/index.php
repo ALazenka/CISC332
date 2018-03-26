@@ -7,7 +7,7 @@
   if (isset($_POST['login_button'])) {
     $account_number = $_POST['account_number'];
     $user_password = $_POST['password'];
-    $validate_customer = "SELECT id, password, role FROM customer WHERE account_number='" . $account_number . "'";
+    $validate_customer = "SELECT id, password, role FROM customer WHERE account_number='$account_number'";
     $result = $conn->query($validate_customer);
     
     if (!$result) {
@@ -18,6 +18,7 @@
     $conn->close();
   
     if ($result->num_rows > 0) {
+      $customer_credentials = "";
       while($row = $result->fetch_assoc()) {
         $customer_credentials = $row;
       }
