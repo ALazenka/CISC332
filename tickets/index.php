@@ -34,9 +34,9 @@
   $get_tickets = "SELECT reservation.id as id, movie.title as movie_title, reservation.tickets_reserved, showing.start_time, theater_complex.name as complex_name
                   FROM reservation
                   JOIN showing
-                    ON showing.id=reservation.showing_id
+                    ON reservation.showing_id=showing.id
                   JOIN movie
-                    ON movie.id=showing.movie_id
+                    ON showing.movie_id=movie.id
                   JOIN theater_complex
                     ON showing.theater_complex_id=theater_complex.id
                   WHERE reservation.account_number=$account_number
